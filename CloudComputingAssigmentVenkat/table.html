@@ -1,0 +1,124 @@
+ <html>
+  <head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <meta charset="utf-8"/>
+    <title>GPU Web Application</title>
+    <style type="text/css">
+    table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+    thead {
+      background: #ccc01a;
+      color: #fff;
+    }
+    td, th {
+      border: 3px solid #000000;
+      text-align: left;
+      padding: 6px;
+    }
+    tr:hover:nth-child(even) {
+      background-color: #edadc0;
+    }
+    body {
+      font-family: "Verdana", Times, serif;
+    }
+    a:visited {
+      color: blue;
+    }
+    a:hover {
+      color: green;
+    }
+</style>
+  </head>
+  <body>
+		<h1 style="text-align:center;"> A01:Building a GPU database of Vulkan features</h1>
+		<h3 style="text-align:right;">Click {{ url_string }} <a href='{{ url }}'>here</a> </h3>
+		<h3> <a href='/'>To Add GPU Click Here</a></h3></h3>
+	   <h1 style="text-align:center;"> GPU's Listing reports </h1>
+		<form method="get">
+      <table>
+      <thead>
+        <tr>
+          <th> GPU name </th>
+          <th> Manufacturer name </th>
+          <th> Date issued </th>
+          <th> GeometryShader </th>
+          <th> TesselationShader </th>
+          <th> ShaderInt16 </th>
+          <th> SparseBinding </th>
+          <th> TextureCompressionETC2 </th>
+          <th> VertexPipelineStoresAndAtomics </th>
+        </tr>
+      </thead>
+		<tbody>
+      <tr>
+          <td><center><button style="font-size: 16px; height: 40px; width: 100px;" type="button" id="btnSearch" value="Compare">Compare</center></td>
+          <td><center><button style="font-size: 16px; height: 40px; width: 100px;" type="submit">Search</button></center></td>
+          <td></td>
+          <td><center><input type = "checkbox" name="filter_geometryShader"  {% if fs_geometryShader %} checked {% endif %} /></center></td>
+          <td><center><input type = "checkbox" name="filter_tesselationShader" {% if fs_tesselationShader %} checked {% endif %} /></center></td>
+          <td><center><input type = "checkbox" name="filter_shaderInt16" {% if fs_shaderInt16 %} checked {% endif %} /></center></td>
+          <td><center><input type = "checkbox" name="filter_sparseBinding"{% if fs_sparseBinding %} checked {% endif %}/></center></td>
+          <td><center><input type = "checkbox" name="filter_textureCompressionETC2"{% if fs_textureCompressionETC2 %} checked {% endif %}/></center></td>
+          <td><center><input type = "checkbox" name="filter_vertexPipelineStoresAndAtomics"{% if fs_vertexPipelineStoresAndAtomics %} checked {% endif %}/></center></td>
+        </tr>
+        <tr>
+          <th> GPU name </th>
+          <th> Manufacturer name </th>
+          <th> Date issued </th>
+          <th> GeometryShader </th>
+          <th> TesselationShader </th>
+          <th> ShaderInt16 </th>
+          <th> SparseBinding </th>
+          <th> TextureCompressionETC2 </th>
+          <th> VertexPipelineStoresAndAtomics </th>
+        </tr>
+      </thead>
+		<tbody>
+			{% for mygpu in gpu_array %}
+        <tr>
+            <td> <input type = "checkbox" name ="choice" value="{{mygpu.key.id()}}" /> <a href="/edit?name={{ mygpu.key.id() }}">{{ mygpu.key.id() }}</a></td>
+            <td> {{ mygpu.manufacturer }} </td>
+            <td> {{ mygpu.dateIssued }} </td>
+            <td> {{ mygpu.geometryShader}} </td>
+						<td> {{	mygpu.tesselationShader }} </td>
+						<td> {{	mygpu.shaderInt16 }} </td>
+						<td> {{	mygpu.sparseBinding }} </td>
+						<td> {{ mygpu.textureCompressionETC2 }} </td>
+						<td> {{	mygpu.vertexPipelineStoresAndAtomics }} </td>
+				</tr>
+			{% endfor %}
+		</tbody>
+		</table>
+		<script>
+		$(document).ready(function(){
+	$("#btnSearch").click(function(){
+	var url="compare?choice=";
+	var flag=false;
+	var count =0;
+	$("input:checkbox[name=choice]:checked").each(function(){
+		if(!flag)
+		{
+			url=url+$(this).val();
+			flag=true;// To trace if first query string added
+			count = count+1
+		}
+		else
+		{
+			url=url+"&choice="+$(this).val();
+			count = count+1
+		}
+		});
+		if(count<=1){
+			window.alert("Please select more than one GPU");
+		}
+		else
+		{
+		window.location = url;}
+	});
+	});
+    </script>
+  </body>
+</html>

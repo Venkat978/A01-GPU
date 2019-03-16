@@ -1,0 +1,62 @@
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <title>GPU Web Application</title>
+    <style type="text/css">
+    table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+    thead {
+      background: #ccc01a;
+      color: #fff;
+    }
+    td, th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 6px;
+    }
+    tr:hover:nth-child(even) {
+      background-color: #EEEEEE;
+    }
+    body {
+      font-family: "Verdana", Times, serif;
+    }
+    a:visited {
+      color: blue;
+    }
+    a:hover {
+      color: green;
+    }
+</style>
+  </head>
+  <body>
+	<h1 style="text-align:center;"> A01:Building a GPU database of Vulkan features</h1>
+	<h3 style="text-align:right;"> Please {{ url_string }} <a href='{{ url }}'>here</a></h3>
+	
+	
+    {% if user %}
+	<h3 style="text-align:left;"> Use the form below to add a GPU </h3>
+		<form method = "post" action="/">
+		        <h4> Enter GPU Name:  <input type = "text" name = "name" placeholder = "Example: GPU" /> </h4>
+            <h4> Enter Manufacturer's Name: <input type = "text" name = "manu" placeholder = "Example: AMD" /> </h4>
+            <h4> Select Date Issued <input type = "date" name = "date_issued" /> </h4>
+            <h4> Select features of GPU:
+            <ul>
+                <li><input type = "checkbox" name ="geometryShader" />Geometry Shader</br></li>
+                <li><input type = "checkbox" name ="tesselationShader" />Tesselation Shader</br></li>
+                <li><input type = "checkbox" name ="shaderInt16" />Shader Int16</br></li>
+                <li><input type = "checkbox" name ="sparseBinding" />Sparse Binding</br></li>
+                <li><input type = "checkbox" name ="textureCompressionETC2" />Texture Compression ETC2</br></li>
+                <li><input type = "checkbox" name ="vertexPipelineStoresAndAtomics" />Vertex Pipeline Stores And Atomics</br></br></li>
+            </ul>
+             <button style="font-size: 16px; height: 25px; width: 80px;" type="submit">Submit</button>
+			 <a href='/table'><button style="font-size: 16px; height: 25px; width: 80px;" type="submit">Continue</a></button>
+			
+	{% else %}
+    <h2 style="text-align:center;"> Hello, Welcome to the application </h2>
+    {% endif %}
+		</form>
+  </body>
+</html>

@@ -1,0 +1,74 @@
+		<html>
+    <head>
+    <style>
+    tr { display: inline-block; float: center; }
+    th, td { display: block; }
+    header {
+      background-color: #e6eaf2;
+      padding: 0px;
+      text-align: center;
+      color: white;
+      font-family: "Verdana", Times, serif;
+    }
+    table {
+      font-family: arial, sans-serif;
+	  border-collapse: collapse;
+      width: 100%;
+    }
+    th {
+      border: 3px solid #e6eaf2 ;
+      text-align: center;
+      padding: 6px;
+      background: #737373;
+      color: #fff;
+    }
+    td{
+      border: 3px solid #e6eaf2;
+      text-align: center;
+      padding: 6px;
+    }
+    h2 {
+      text-align:center;
+    }
+    </style>
+    </head>
+    <body>
+	<h1 style="text-align:center;"> A01:Building a GPU database of Vulkan features</h1>
+    <h3 style="text-align:right;"> <a href='/table'>Home</a> </h3>  
+	  <header>
+        <h1> GPU of Vulkan features </h1>
+		
+      </header>
+      <h2> <b>Comparison reports</h2>
+    <table align=center>	
+        <tr>
+          <th> GPU name </th>
+          <th> Manufacturer name </th>
+          <th> Date issued </th>
+          <th> GeometryShader </th>
+          <th> TesselationShader </th>
+          <th> ShaderInt16 </th>
+          <th> SparseBinding </th>
+          <th> TextureCompressionETC2 </th>
+          <th> VertexPipelineStoresAndAtomics </th>
+        </tr>
+			{% for mygpu in gpu_array %}
+            <tr>
+            <td> {{ mygpu.key.id() }} </td>
+            <td> {{ mygpu.manufacturer }} </td>
+            <td> {{ mygpu.dateIssued }} </td>
+            <td> {{ mygpu.geometryShader}} </td>
+						<td> {{	mygpu.tesselationShader }} </td>
+						<td> {{	mygpu.shaderInt16 }} </td>
+						<td> {{	mygpu.sparseBinding }} </td>
+						<td> {{ mygpu.textureCompressionETC2 }} </td>
+						<td> {{	mygpu.vertexPipelineStoresAndAtomics }} </td>
+		        </tr>
+			{% endfor %}
+	</table>
+  <br/>
+    <form method = "post">
+    <button style="font-size: 16px; height: 25px; width: 70px;" type="submit">Cancel</button>
+    </form>
+    </body>
+</html>
