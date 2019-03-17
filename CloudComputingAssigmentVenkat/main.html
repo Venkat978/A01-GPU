@@ -4,7 +4,7 @@
     <title>GPU Web Application</title>
     <style type="text/css">
     table {
-      font-family: arial, sans-serif;
+      font-family: Verdana, sans-serif;
       border-collapse: collapse;
       width: 100%;
     }
@@ -39,9 +39,9 @@
     {% if user %}
 	<h3 style="text-align:left;"> Use the form below to add a GPU </h3>
 		<form method = "post" action="/">
-		        <h4> Enter GPU Name:  <input type = "text" name = "name" placeholder = "Example: GPU" /> </h4>
-            <h4> Enter Manufacturer's Name: <input type = "text" name = "manu" placeholder = "Example: AMD" /> </h4>
-            <h4> Select Date Issued <input type = "date" name = "date_issued" /> </h4>
+		        <h4> Enter GPU Name:  <input type = "text" name = "name" placeholder = "Example: GPU" required /> </h4>
+            <h4> Enter Manufacturer's Name: <input type = "text" name = "manufacture" placeholder = "Example: AMD" required /> </h4>
+            <h4> Select Date Issued <input type = "date" name = "date_issued" required /> </h4>
             <h4> Select features of GPU:
             <ul>
                 <li><input type = "checkbox" name ="geometryShader" />Geometry Shader</br></li>
@@ -52,7 +52,7 @@
                 <li><input type = "checkbox" name ="vertexPipelineStoresAndAtomics" />Vertex Pipeline Stores And Atomics</br></br></li>
             </ul>
              <button style="font-size: 16px; height: 25px; width: 80px;" type="submit">Submit</button>
-			 <a href='/table'><button style="font-size: 16px; height: 25px; width: 80px;" type="submit">Continue</a></button>
+			 <h3 style="text-align:right;"> <a href='/table'>View GPU</a> </h3>
 			
 	{% else %}
     <h2 style="text-align:center;"> Hello, Welcome to the application </h2>

@@ -77,7 +77,7 @@ class Edit(webapp2.RequestHandler):
 		name = self.request.get('name')
 
 		mygpu = MyGpu(id = name)
-		mygpu.dateIssued, mygpu.manufacturer = datetime.strptime(self.request.get('date'), "%Y-%m-%d"), self.request.get('manu')
+		mygpu.dateIssued, mygpu.manufacturer = datetime.strptime(self.request.get('date'), "%Y-%m-%d"), self.request.get('manufacture')
 		mygpu.geometryShader = self.request.get('geometryShader') == "on"
 		mygpu.tesselationShader= self.request.get('tesselationShader') == "on"
 		mygpu.shaderInt16 = self.request.get('shaderInt16') == "on"

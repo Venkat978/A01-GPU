@@ -5,7 +5,7 @@
     <title>GPU Web Application</title>
     <style type="text/css">
     table {
-      font-family: arial, sans-serif;
+      font-family: Verdana, sans-serif;
       border-collapse: collapse;
       width: 100%;
     }
@@ -41,7 +41,7 @@
       <table>
       <thead>
         <tr>
-          <th> GPU name </th>
+          <th> GPU Name </th>
           <th> Manufacturer name </th>
           <th> Date issued </th>
           <th> GeometryShader </th>
@@ -63,17 +63,6 @@
           <td><center><input type = "checkbox" name="filter_sparseBinding"{% if fs_sparseBinding %} checked {% endif %}/></center></td>
           <td><center><input type = "checkbox" name="filter_textureCompressionETC2"{% if fs_textureCompressionETC2 %} checked {% endif %}/></center></td>
           <td><center><input type = "checkbox" name="filter_vertexPipelineStoresAndAtomics"{% if fs_vertexPipelineStoresAndAtomics %} checked {% endif %}/></center></td>
-        </tr>
-        <tr>
-          <th> GPU name </th>
-          <th> Manufacturer name </th>
-          <th> Date issued </th>
-          <th> GeometryShader </th>
-          <th> TesselationShader </th>
-          <th> ShaderInt16 </th>
-          <th> SparseBinding </th>
-          <th> TextureCompressionETC2 </th>
-          <th> VertexPipelineStoresAndAtomics </th>
         </tr>
       </thead>
 		<tbody>
